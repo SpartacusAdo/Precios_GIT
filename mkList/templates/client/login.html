@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Login</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/keyLogin.png' %}">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" 
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: hsl(60, 22%, 96%) !important;
+            background-image: url("{% static 'images/bgLogin.webp' %}") !important;
+		}
+
+		.user_card {
+			width: 350px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: #dbdb76;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: rgb(10, 10, 10);
+			
+		}
+
+		.login_btn {
+			width: 100%;
+			background: #33ccff !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+		#messages{
+			background-color: grey;
+			color: #fff;
+			padding: 10px;
+			margin-top: 10px;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				
+                <div class="text-center">
+					<h3 class="fst-italic" id="form-title">Bienvenido</h3>
+                    <h6 class="fst-italic" id="form-title">Ingresa a la tienda</h6>
+				</div>
+
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+
+                        {% csrf_token %}
+
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+                        
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+								<input type="password" name="password" placeholder="Password..." class="form-control" >
+						</div>
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn btn-primary xlogin_btn" type="submit" value="Ingresar">
+				   			</div>
+                            
+					</form>
+
+				</div>
+
+                {% if messages %}
+                <div class="text-center text-dark fst-italic fw-bolder">
+                    
+                    {% for m in messages%}
+                       <br> <p>{{  m }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center fst-italic">
+						No tienes una cuenta? &nbsp;&nbsp; <a href="{% url 'client:register' %}" 
+                        class="ml-2 text-decoration-none">Registrate</a>
+					</div>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

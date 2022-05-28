@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Card -->
+
+<div class="p-2">
+    
+    <div class="container">
+        <div class="container text-center"><span class="me_title"> {{ categoria.categoria }}</span></div>
+    
+        <div class="row row-cols-1 row-cols-lg-5 g-2 g-lg-3 mt-0">
+            
+            {% for bulbo in categoria.bulbos.all %}
+            {% include 'client/gallery_filter.html' %}
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

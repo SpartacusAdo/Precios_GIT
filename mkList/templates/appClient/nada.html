@@ -1,0 +1,36 @@
+{% extends '../base.html' %}    <!-- 1 Heredar desde base  14 may b2022-->
+
+{% block js %}
+
+<script>
+  function delBulbo(id) {
+
+    Swal.fire({
+      title: 'Esta seguro ?',
+      text: 'Esta accion es irreversible!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminalo!',
+      confirmButtonColor: '#dc3545',
+      cancelButtonText: 'No, no eliminar.'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = "/del_bulbo/" + id + "/"
+
+      }
+    })
+
+  }
+</script>
+
+{% endblock %}
+
+{% load static %}
+
+{% block content %}              <!-- 2 Block contenido -->
+
+<h1>Nadaaaaaaa</h1>
+
+
+
+{% endblock %}                      <!-- 2 Block contenido -->

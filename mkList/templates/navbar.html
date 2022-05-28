@@ -1,0 +1,82 @@
+<!-- Navbar    https://www.remove.bg/es/upload 
+                https://www.youtube.com/watch?v=eTqHeeyA3bk
+                https://www.youtube.com/watch?v=y7P6ytatRYk&list=PL_wRgp7nihyZsEnudJ-XUAEdnOGUojbnn
+-->
+{% load static %}
+<nav class="navbar navbar-expand-lg py-3 mi_navbar">
+  <div class="container mi_navbar">
+
+
+    <a href="{% url 'client:gallery' %}" class="navbar-brand"><img src="{% static 'images/truebulb.webp' %}" alt="Todas" height="80" width=""></a>
+    <h3 class="p-3 me_title">Show Code</h3>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
+      style="color: rgb(194, 203, 17)">
+      <span class="navbar-toggler-icon icon-bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navmenu">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mi_ahref" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">Vivero
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+            {% for categoria in menu_categorias %}
+            <li>
+              <a href="{% url 'appProduct:category' categoria.slug %}" class="dropdown-item mi_ahref">{{ categoria.categoria }}</a>
+            </li>
+            {% endfor %}
+
+            <li><a href="{% url 'client:gallery' %}" class="dropdown-item mi_ahref">Todas</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link mi_ahref" href="{% url 'appClient:cliente' %}">Clientes</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mi_ahref" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Productos
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a href="{% url 'appProduct:list_categoria' %}" class="dropdown-item mi_ahref">Categorias</a></li>
+            <li><a href="{% url 'appProduct:list_colores' %}" class="dropdown-item mi_ahref">Colores</a></li>
+
+            <li><a href="{% url 'appProduct:list_bulbo' %}" class="dropdown-item mi_ahref">Bulbos</a></li>
+            <li><a href="#" class="dropdown-item">Listas</a></li>
+
+          </ul>
+
+          {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link mi_ahref" href="{% url 'appClient:mod_datos' request.user.id %}">Mis Datos </a>
+        </li>
+        <li class="nav-item">
+
+          <span class="fs-6 fw-bold">
+            <a class="nav-link mi_ahref" href="{% url 'client:logout' %}">SALIR - {{ user.username }} </a>
+          </span>
+
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+
+        {% endif %}
+
+        </li>
+      </ul>
+    </div>
+
+
+
+  </div>
+</nav>

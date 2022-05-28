@@ -1,0 +1,94 @@
+{% extends '../../base.html' %}
+
+{% block js %}
+
+<script>
+  function delBulbo(id) {
+
+    Swal.fire({
+      title: 'Esta seguro ?',
+      text: 'Esta accion es irreversible!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminalo!',
+      confirmButtonColor: '#dc3545',
+      cancelButtonText: 'No, no eliminar.'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = "/del_bulbo/" + id + "/"
+
+      }
+    })
+
+  }
+</script>
+
+{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="card mt-1 border-0">
+  <div class="card-body">
+    <div class="container text-left text-black-50 mt-1 mb-1 border-bottom">
+      <div class="row">
+        <div class="col">
+          <h2>
+            <blockquote>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Listado de bulbos</blockquote>
+          </h2>
+        </div>
+
+        <div class="col">
+          <a href="{% url 'appProduct:add_bulbo' %}">
+            <img title="Crear" src="{% static '/images/iconos/edit.jpg' %}" alt="Crear" height="45" width="" /></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="container table-responsive">
+
+    <table class="table table-striped table-borderless table-hover">
+      <caption>Fin de bulbos</caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Codigo</th>
+          <th scope="col">Bulbo</th>
+          <th scope="col">Creado</th>
+          <th scope="col">Modificado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bulbo in bulbos %}
+        <tr>
+          <td>{{ bulbo.id }}</td>
+          <td>{{ bulbo.codigo }}</td>
+          <td>{{ bulbo.bulbo }}</td>
+          <td>{{ bulbo.creado_en }}</td>
+          <td>{{ bulbo.modificado_en }}</td>
+          <td>
+            <div>
+              <a href="{% url 'appProduct:mod_bulbo' bulbo.id %}">
+                <img title="Modificar" src="{% static 'images/iconos/pyedit24.png' %}" alt="Modificar" /></a>
+              &nbsp; &nbsp; &nbsp;
+              <a href="#" onclick="delBulbo({{ bulbo.id }})">
+                <img title="Eliminar" src="{% static 'images/iconos/pydelete24.png' %}" alt="Eliminar" /></a>
+
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <hr>
+    <div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

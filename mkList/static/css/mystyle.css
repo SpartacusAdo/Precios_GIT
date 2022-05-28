@@ -1,0 +1,66 @@
+body {
+    background-color: hwb(108 54% 7%);
+}
+
+.me_title {
+    font-family: 'Pacifico', cursive;
+    color: hsl(62, 89%, 35%);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0.05em 0.05em 0em hsla(96, 89%, 11%, 0.945);
+    font-size: calc(1em + 2vw);
+}
+
+.me_title_img {
+    font-family: 'Roboto', sans-serif;
+    color: hsl(137, 95%, 9%);
+    text-shadow: 0.05em 0.05em 0em hwb(96 4% 22% / 0.945);
+    font-size: calc(1.1em + 0.1vw);
+    text-align: center;
+}
+
+.me_footer {
+    font-family: 'Pacifico', cursive;
+    color: hsl(62, 89%, 35%);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0.05em 0.05em 0em hsla(96, 89%, 11%, 0.945);
+    font-size: calc(0.5em + 2vw);
+}
+
+.la_div {
+    background-color: hwb(105 89% 1%);
+    border: 1.5px solid hwb(120 9% 69%);
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    padding: 10px;
+    }
+
+.la_img {
+    background-color: hwb(64 64% 4%);
+
+    }
+
+.mi_navbar{
+        background:hwb(108 43% 14%) !important;
+      }
+
+.mi_ahref {
+    font-family: 'Roboto', sans-serif;
+        color: hwb(55 2% 65%);
+        font-weight: bolder;
+      }
+
+.mi_ahref:hover {
+        font-family: 'Roboto', sans-serif;
+            color: rgb(4, 10, 4);
+            text-shadow: 0.05em 0.05em 0em hsla(96, 89%, 11%, 0.945);
+            background:rgb(138, 209, 120) !important;
+            font-weight: bold;
+            font-style: italic;
+          }
+
+.mi_ahref:focus{
+    color: hsl(60, 89%, 14%);
+    text-shadow: 0.05em 0.05em 0em hsla(96, 89%, 11%, 0.945);
+        }
